@@ -101,11 +101,24 @@ class LoginController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('google')->user();
-        $checkEmail = User::whereEmail($user->getEmail())->first();
-        if ($checkEmail)
+        $checkUser = User::whereEmail($user->getEmail())->first();
+        if (! $checkUser)
         {
-            return "user exist....!!!";
+            $user = User::create([
+                'name' => $user->getName(),
+                'email' => $user->getEmail(),
+                'password' => bcrypt($user->getId()),
+            ]);
         }
 
+        if ($user->active == 0)
+        {
+            $user->update([
+                'active' =>1
+            ]);
+        }
+
+        auth()->loginUsingId($user->id);
+        return redirect('/');
     }
 }
