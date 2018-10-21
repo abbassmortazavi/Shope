@@ -22,7 +22,7 @@ class Article extends Model
             ]
         ];
     }
-
+//dddd
     public function path()
     {
     	return "article/$this->slug";

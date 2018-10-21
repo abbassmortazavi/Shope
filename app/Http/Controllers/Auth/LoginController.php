@@ -104,7 +104,7 @@ class LoginController extends Controller
         $checkEmail = User::whereEmail($user->getEmail())->first();
         if ($checkEmail)
         {
-            return "user exist....";
+            return "user exist....!!!";
         }
 
     }
