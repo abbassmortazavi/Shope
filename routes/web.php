@@ -10,12 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//5:48-16
+//17
 Route::get('/', function () {
     //return auth()->loginUsingId(1);
     //dd(url()->full());
     //event(new \App\Events\UsersActivation(\App\User::find(1)));
-    //return view('welcome');
+    /*alert()->info('test');
+    return view('welcome');*/
 });
 
 Route::get('/cookie/set','HomeController@setCookie');
