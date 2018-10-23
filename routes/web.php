@@ -15,8 +15,8 @@ Route::get('/', function () {
     //return auth()->loginUsingId(1);
     //dd(url()->full());
     //event(new \App\Events\UsersActivation(\App\User::find(1)));
-    /*alert()->info('test');
-    return view('welcome');*/
+    /*alert()->info('test');*/
+    return view('welcome');
 });
 
 Route::get('/cookie/set','HomeController@setCookie');
@@ -64,8 +64,18 @@ Route::group(['namespace'=>'Auth'] , function (){
 
     $this->get('login/google', 'LoginController@redirectToProvider');
     $this->get('login/google/callback', 'LoginController@handleProviderCallback');
+});
 
-
+Route::post('data' , function (){
+    $validate = \Illuminate\Support\Facades\Validator::make(request()->all() , [
+        'message' => 'required',
+        'g-recaptcha-response' => 'recaptcha'
+    ]);
+    if ($validate->fails())
+    {
+        return 'fails';
+    }
+    return request('message');
 });
 
 

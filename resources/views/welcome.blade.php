@@ -13,10 +13,27 @@
 
     </head>
     <body>
+
+    <form action="data" method="post">
+        @csrf
+        <textarea name="message"></textarea>
+        <div class="g-recaptcha" data-sitekey="6Ld6XHYUAAAAAOPlIl2XSsF9CouzAch4FZFBlHU8"></div>
+        <input type="submit" value="Send">
+    </form>
+
+
+
+
+
+
+
+
+
     <script src="/js/sweetalert2.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     @include('sweet::alert')
 
-    <script>
+    {{--<script>
         swal.mixin({
             input: 'text',
             confirmButtonText: 'Next &rarr;',
@@ -41,6 +58,6 @@
                 })
             }
         })
-    </script>
+    </script>--}}
     </body>
 </html>

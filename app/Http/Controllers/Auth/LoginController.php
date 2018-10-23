@@ -121,4 +121,14 @@ class LoginController extends Controller
         auth()->loginUsingId($user->id);
         return redirect('/');
     }
+
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'g-recaptcha-response' => 'recaptcha'
+        ]);
+    }
+
 }
