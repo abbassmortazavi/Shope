@@ -17,6 +17,7 @@ Route::get('/', function () {
     //event(new \App\Events\UsersActivation(\App\User::find(1)));
     /*alert()->info('test');*/
     return view('welcome');
+
 });
 
 Route::get('/cookie/set','HomeController@setCookie');
